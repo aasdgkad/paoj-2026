@@ -1,5 +1,12 @@
 package com.pao.laboratory03.collections;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+
 /**
  * Exercițiul 1 — Colecții: HashMap și TreeMap
  *
@@ -7,22 +14,28 @@ package com.pao.laboratory03.collections;
  *
  * PARTEA A — HashMap (frecvența cuvintelor)
  * 1. Declară un array de String-uri:
- *    String[] words = {"java", "python", "java", "c++", "python", "java", "rust", "c++", "go"};
- * 2. Creează un HashMap<String, Integer> care contorizează de câte ori apare fiecare cuvânt.
- *    - Parcurge array-ul și folosește put() + getOrDefault() pentru a incrementa contorul.
+ * String[] words = {"java", "python", "java", "c++", "python", "java", "rust",
+ * "c++", "go"};
+ * 2. Creează un HashMap<String, Integer> care contorizează de câte ori apare
+ * fiecare cuvânt.
+ * - Parcurge array-ul și folosește put() + getOrDefault() pentru a incrementa
+ * contorul.
  * 3. Afișează map-ul.
  * 4. Verifică dacă există cheia "rust" cu containsKey().
  * 5. Afișează DOAR cheile (keySet()), apoi DOAR valorile (values()).
- * 6. Parcurge map-ul cu entrySet() și afișează "cheia -> valoarea" pentru fiecare intrare.
+ * 6. Parcurge map-ul cu entrySet() și afișează "cheia -> valoarea" pentru
+ * fiecare intrare.
  *
  * PARTEA B — TreeMap (sortare automată)
- * 7. Creează un TreeMap<String, Integer> din același HashMap (constructor cu argument).
+ * 7. Creează un TreeMap<String, Integer> din același HashMap (constructor cu
+ * argument).
  * 8. Afișează TreeMap-ul — observă ordinea alfabetică a cheilor.
  * 9. Folosește firstKey() și lastKey() pentru a afișa prima și ultima cheie.
  *
  * PARTEA C — Map cu obiecte
- * 10. Creează un HashMap<String, List<String>> care asociază materii cu liste de studenți.
- *     Exemplu: "PAOJ" -> ["Ana", "Mihai", "Ion"], "BD" -> ["Ana", "Elena"]
+ * 10. Creează un HashMap<String, List<String>> care asociază materii cu liste
+ * de studenți.
+ * Exemplu: "PAOJ" -> ["Ana", "Mihai", "Ion"], "BD" -> ["Ana", "Elena"]
  * 11. Afișează toți studenții de la materia "PAOJ".
  * 12. Adaugă un student nou la "BD" și afișează lista actualizată.
  *
@@ -50,7 +63,37 @@ package com.pao.laboratory03.collections;
  */
 public class Main {
     public static void main(String[] args) {
-        // TODO: implementează cele 3 părți de mai sus
+        String[] words = { "java", "python", "java", "c++", "python", "java", "rust", "c++", "go" };
+
+        Map<String, Integer> wordFrequency = new HashMap<>();
+        for (String word : words) {
+            wordFrequency.put(word, wordFrequency.getOrDefault(word, 0) + 1);
+        }
+
+        System.out.println("=== PARTEA A: HashMap — frecvența cuvintelor ===");
+        System.out.println("Frecvență: " + wordFrequency);
+        System.out.println("Conține 'rust'? " + wordFrequency.containsKey("rust"));
+        System.out.println("Chei: " + wordFrequency.keySet());
+        System.out.println("Valori: " + wordFrequency.values());
+
+        for (Map.Entry<String, Integer> entry : wordFrequency.entrySet()) {
+            System.out.println(entry.getKey() + " -> " + entry.getValue());
+        }
+
+        System.out.println("\n=== PARTEA B: TreeMap — sortare automată ===");
+        TreeMap<String, Integer> sortedWords = new TreeMap<>(wordFrequency);
+        System.out.println("Sortat: " + sortedWords);
+        System.out.println("Prima cheie: " + sortedWords.firstKey());
+        System.out.println("Ultima cheie: " + sortedWords.lastKey());
+
+        System.out.println("\n=== PARTEA C: Map cu obiecte ===");
+        Map<String, List<String>> courseMap = new HashMap<>();
+        courseMap.put("PAOJ", new ArrayList<>(Arrays.asList("Ana", "Mihai", "Ion")));
+        courseMap.put("BD", new ArrayList<>(Arrays.asList("Ana", "Elena")));
+
+        System.out.println("Studenți la PAOJ: " + courseMap.get("PAOJ"));
+
+        courseMap.get("BD").add("George");
+        System.out.println("Studenți la BD (actualizat): " + courseMap.get("BD"));
     }
 }
-
