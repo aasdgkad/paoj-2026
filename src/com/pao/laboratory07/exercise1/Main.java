@@ -13,7 +13,7 @@ public class Main {
         // load initial state
         OrderState initialState = OrderState.valueOf(scanner.next());
         Order order = new Order(initialState);
-        System.out.println(initialState);
+        System.out.println("Initial order state: " + initialState);
 
         while (true) {
             OrderCommand orderCommand = OrderCommand.valueOf(scanner.next());
@@ -22,7 +22,7 @@ public class Main {
                     try {
                         order.nextState();
                     } catch (OrderIsAlreadyFinalException e) {
-                        System.out.println("Comanda este in stare finala.");
+                        System.out.println("Order is already in a final state.");
                     }
                 }
                 case cancel -> {

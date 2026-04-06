@@ -13,15 +13,15 @@ public class Order {
         switch (currentState) {
             case PLACED:
                 currentState = OrderState.PROCESSED;
-                System.out.println("PROCESSED");
+                System.out.println("Order state updated to: PROCESSED");
                 break;
             case PROCESSED:
                 currentState = OrderState.SHIPPED;
-                System.out.println("SHIPPED");
+                System.out.println("Order state updated to: SHIPPED");
                 break;
             case SHIPPED:
                 currentState = OrderState.DELIVERED;
-                System.out.println("DELIVERED");
+                System.out.println("Order state updated to: DELIVERED");
                 break;
             case DELIVERED:
             case CANCELED:
