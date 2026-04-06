@@ -13,7 +13,7 @@ public class Main {
         // load initial state
         OrderState initialState = OrderState.valueOf(scanner.next());
         Order order = new Order(initialState);
-        System.out.println("Initial order state: " + initialState);
+        System.out.println(initialState);
 
         while (true) {
             OrderCommand orderCommand = OrderCommand.valueOf(scanner.next());
@@ -22,25 +22,26 @@ public class Main {
                     try {
                         order.nextState();
                     } catch (OrderIsAlreadyFinalException e) {
-                        System.out.println("Order is already in a final state.");
+                        System.out.println("Comanda este in stare finala.");
                     }
                 }
                 case cancel -> {
                     try {
                         order.cancel();
                     } catch (CannotCancelFinalOrderException e) {
-                        System.out.println("Cannot cancel a final state order.");
+                        System.out.println("Comanda este in stare finala.");
                     }
                 }
                 case undo -> {
                     try {
                         order.undoState();
                     } catch (CannotRevertInitialOrderStateException e) {
-                        System.out.println("Cannot undo the initial order state.");
+                        System.out.println("Nu există stare anterioară pentru undo.");
                     }
                 }
                 case QUIT -> {
                     System.out.println("User quit the program.");
+                    scanner.close();
                     return;
                 }
             }
