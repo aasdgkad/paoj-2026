@@ -1,0 +1,15 @@
+Interogari posibile
+
+Adaugarea unei publicatii noi in catalogul bibliotecii.
+Stergerea unei publicatii din sistem folosind codul ISBN.
+Cautarea detaliilor unei publicatii specifice dupa ISBN.
+Listarea tuturor cartilor scrise de un anumit autor.
+Filtrarea publicatiilor disponibile in functie de categorie.
+Inregistrarea unui membru nou in baza de date a utilizatorilor.
+Stergerea unui utilizator din sistem folosind identificatorul acestuia.
+Cautarea informatiilor despre un utilizator dupa ID-ul sau.
+Imprumutarea unei publicatii de catre un membru activ.
+Returnarea unei publicatii imprumutate anterior de catre un membru.
+
+Clase create
+Utilizator, Membru, Bibliotecar, Publicatie, CarteFizica, CarteDigitala, UtilizatorService, CatalogService, ElementNegasitException, OperatieInvalidaException
